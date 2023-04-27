@@ -1,11 +1,24 @@
-var gMeme = { imgId: '', userInput: ['', ''], fontSize: 40, colorFill: 'white', colorStroke: 'black' }
+'use strict'
+var gMeme = {
+    selectedImgId: 0,
+    selectedLineIdx: 0,
+    lines: [
+        {
+            txt: '',
+            size: 40,
+            align: 'left',
+            colorFill: 'white',
+            colorStroke: 'black',
+        }
+    ]
+}
 
 function setMemeImg(imgId) {
-    gMeme.imgId = imgId
+    gMeme.selectedImgId = imgId
     console.log('gMeme', gMeme)
 }
 function setLineTxt(userInput) {
-    gMeme.userInput = userInput
+    gMeme.lines[gMeme.selectedLineIdx].txt = userInput
     saveToStorage('gMeme', gMeme)
 }
 
@@ -16,20 +29,27 @@ function getMeme() {
 function setLineFontSize(sizeChange) {
     console.log('sizeChange:', sizeChange)
     if (sizeChange === 1) {
-        gMeme.fontSize += 10
+        gMeme.lines[gMeme.selectedLineIdx].size += 10
     }
     else {
-        gMeme.fontSize -= 10
+        gMeme.lines[gMeme.selectedLineIdx].size -= 10
     }
 }
 
 function setTxtColor(inputvalue) {
-    gMeme.colorFill = inputvalue
+    gMeme.lines[gMeme.selectedLineIdx].colorFill = inputvalue
     console.log('gmeme', gMeme)
 }
 
 function AddLine() {
-
+    gMeme.selectedLineIdx++
+    gMeme.lines.push({
+        txt: '',
+        size: 40,
+        align: 'left',
+        colorFill: 'white',
+        colorStroke: 'black'
+    })
 }
 
 function DeleteLine() {

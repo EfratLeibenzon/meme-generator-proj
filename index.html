@@ -40,15 +40,15 @@
             <img id="18" src="img/18.jpg" alt="" onclick="onUploadImg(18)" />
         </section>
 
-        <section class="meme-editor">
+        <section class="meme-editor hide">
             <section class="canvas-container">
                 <canvas id="meme-canvas" width="400" height="400"></canvas>
             </section>
             <section class="control-box"></section>
-            <input type="text" id="text-input" placeholder="write text here" oninput="renderMeme()">
-            <button onclick="onAddLine()">Add Text</button>
-            <button onclick="onDeleteLine()">Delete Text</button>
-            <button onclick="onSwitchLine()">switch between lines</button>
+            <input type="text" id="text-input" placeholder="Write Text Here" oninput="renderMeme()">
+            <button onclick="onAddLine()">Add Line</button>
+            <button onclick="onDeleteLine()">Delete Line</button>
+            <button onclick="onSwitchLine()">Switch Between Lines</button>
 
             Text Color:<input type="color" id="color" name="color" form="frmRegister" value="#ff0000"
                 oninput="onTxtColorChange(value)">
