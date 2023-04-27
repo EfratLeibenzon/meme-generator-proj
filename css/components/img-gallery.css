@@ -1,0 +1,9 @@
+.img-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-rows: auto;
+    grid-auto-flow: dense;
+    justify-items: stretch;
+    padding: 60px;
+    gap: 5px;
+}
