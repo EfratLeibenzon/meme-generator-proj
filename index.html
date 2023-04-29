@@ -9,58 +9,52 @@
     <title>Meme Generator</title>
 </head>
 
-<body class="main-layout">
+<body class="main-layout" onload="onInit()">
 
-    <header>
-        <h2 class="logo">Meme Generator</h2>
+    <header class="main-header flex space-around align-center">
+        <h1 class="logo">Meme Generator</h1>
         <nav class="nav-bar">
+            <span>Gallery</span>
+            <span>Memes</span>
+            <span>About</span>
         </nav>
     </header>
 
-    <main>
-        <datalist class="search-bar"></datalist>
-        <section class="img-gallery">
-            <img id="1" src="img/1.jpg" alt="" onclick="onUploadImg(1)" />
-            <img id="2" src="img/3.jpg" alt="" onclick="onUploadImg(2)" />
-            <img id="3" src="img/2.jpg" alt="" onclick="onUploadImg(3)" />
-            <img id="4" src="img/4.jpg" alt="" onclick="onUploadImg(4)" />
-            <img id="5" src="img/5.jpg" alt="" onclick="onUploadImg(5)" />
-            <img id="6" src="img/6.jpg" alt="" onclick="onUploadImg(6)" />
-            <img id="7" src="img/7.jpg" alt="" onclick="onUploadImg(7)" />
-            <img id="8" src="img/8.jpg" alt="" onclick="onUploadImg(8)" />
-            <img id="9" src="img/9.jpg" alt="" onclick="onUploadImg(9)" />
-            <img id="10" src="img/10.jpg" alt="" onclick="onUploadImg(10)" />
-            <img id="11" src="img/11.jpg" alt="" onclick="onUploadImg(11)" />
-            <img id="12" src="img/12.jpg" alt="" onclick="onUploadImg(12)" />
-            <img id="13" src="img/13.jpg" alt="" onclick="onUploadImg(13)" />
-            <img id="14" src="img/14.jpg" alt="" onclick="onUploadImg(14)" />
-            <img id="15" src="img/15.jpg" alt="" onclick="onUploadImg(15)" />
-            <img id="16" src="img/16.jpg" alt="" onclick="onUploadImg(16)" />
-            <img id="17" src="img/17.jpg" alt="" onclick="onUploadImg(17)" />
-            <img id="18" src="img/18.jpg" alt="" onclick="onUploadImg(18)" />
+    <main class="main-container">
+        <section class="filters flex space-between align-center">
+            <select class="select-tag" onchange="onSetFilter(this.value)">
+                <option value="">Search-Tag</option>
+            </select>
+            <nav class="tags-nav grid"></nav>
         </section>
+        <section class="img-gallery grid"></section>
+    </main>
 
-        <section class="meme-editor hide">
-            <section class="canvas-container">
-                <canvas id="meme-canvas" width="400" height="400"></canvas>
-            </section>
-            <section class="control-box"></section>
-            <input type="text" id="text-input" placeholder="Write Text Here" oninput="renderMeme()">
-            <button onclick="onAddLine()">Add Line</button>
-            <button onclick="onDeleteLine()">Delete Line</button>
-            <button onclick="onSwitchLine()">Switch Between Lines</button>
+    <section class="meme-editor hide">
+        <section class="canvas-container">
+            <canvas id="meme-canvas" width="400" height="400"></canvas>
+        </section>
+        <section class="control-box grid">
+            <input type="text" class="txt-inp" id="text-input" placeholder="Write Text Here" oninput="onEnterTxt(this)">
+            <button class="add-line" onclick="onAddLine()">+</button>
+            <button class="del-line" onclick="onDeleteLine()">🗑️</button>
+            <button class="switch-line" onclick="onSwitchLine()">⬆⬇</button>
 
-            Text Color:<input type="color" id="color" name="color" form="frmRegister" value="#ff0000"
+            <input type="color" class="clr-inp" id="color" name="color" form="frmRegister" value="#ff0000"
                 oninput="onTxtColorChange(value)">
-            <button onclick="onFontSizeChange(1)">A+</button>
-            <button onclick="onFontSizeChange(-1)">A-</button>
-
-
+            <button class="fnt-large" onclick="onFontSizeChange(1)">A+</button>
+            <button class="fnt-small" onclick="onFontSizeChange(-1)">A-</button>
+            <section class="btns download flex align-center">
+                <a href="#" onclick="onDownloadMeme(this)" download="your_meme.jpg">Download</a>
+            </section>
         </section>
+    </section>
 
     </main>
 
-    <footer>
+    <footer class="footer">
+        <h2 class="logo">Meme Generator</h2>
+        <small class="rights">©Cofferights</small>
     </footer>
 
 </body>

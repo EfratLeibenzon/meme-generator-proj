@@ -1,51 +1,59 @@
 'use strict'
-let gElCanvas = document.querySelector("#meme-canvas")
-let gCtx = gElCanvas.getContext('2d')
-let gLineX = gElCanvas.width / 2
-let gLineY
+var gElCanvas
+var gCtx
 
 function onUploadImg(imgId) {
     let elImgGallery = document.querySelector('.img-gallery')
-    console.log(elImgGallery)
     elImgGallery.classList.add('hide')
     let elMemeEditor = document.querySelector('.meme-editor')
-    elMemeEditor.classList.remove('hide')
+    elMemeEditor.classList.add('flex')
     setMemeImg(imgId)
-    renderImg(imgId)
+    renderMeme()
 
 }
 
 function renderImg(imgId) {
-    let img = document.getElementById(imgId)
-    gCtx.drawImage(img, 0, 0, gElCanvas.width, gElCanvas.height)
+    let elImg = new Image()
+    const imgUrl = gImgs.find(img => img.id === imgId).url
+    elImg.src = imgUrl
+    elImg.onload = () => {
+        gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
+        drawTxt()
+        drawRect()
+    }
+
+}
+function onEnterTxt(ele) {
+    setLineTxt(ele.value)
+    renderMeme()
 }
 
 function renderMeme() {
-    var userInput = document.getElementById("text-input").value
-    setLineTxt(userInput)
     renderImg(getMeme().selectedImgId)
-
-    if (getMeme().selectedLineIdx === 0) {
-        gLineY = gElCanvas.height / 4
-
-    } else if (getMeme().selectedLineIdx === 1) {
-        gLineY = gElCanvas.height - gElCanvas.height / 4
-
-    } else {
-        gLineY = gElCanvas.height / 2
-    }
-
-    gCtx.lineWidth = 2
-    gCtx.strokeStyle = getMeme().lines[gMeme.selectedLineIdx].colorStroke
-    gCtx.fillStyle = getMeme().lines[gMeme.selectedLineIdx].colorFill
-    gCtx.font = getMeme().lines[gMeme.selectedLineIdx].size + 'px Impact'
-    gCtx.fillText(userInput, gLineX, gLineY)
-    gCtx.strokeText(userInput, gLineX, gLineY)
-
-    console.log('gmeme', gMeme)
-    console.log(gCtx.font)
-
 }
+
+function drawTxt() {
+    gMeme.lines.forEach(line => {
+        gCtx.textBaseLine = 'middle'
+        gCtx.textAlign = line.align
+        gCtx.fillStyle = line.colorFill
+        gCtx.font = `${line.size}px Impact`
+        gCtx.strokeStyle = line.colorStroke
+        gCtx.lineWidth = 2
+        gCtx.strokeText(line.txt, line.x, line.y)
+        gCtx.fillText(line.txt, line.x, line.y)
+    })
+}
+
+function drawRect() {
+    setRectPos()
+    const line = gMeme.lines[gMeme.selectedLineIdx]
+    gCtx.beginPath()
+    gCtx.rect(line.rectPos.x, line.rectPos.y, line.rectPos.width, line.rectPos.height)
+    gCtx.lineWidth = 1
+    gCtx.stroke()
+}
+
 
 function onFontSizeChange(sizeChange) {
     setLineFontSize(sizeChange)
@@ -68,6 +76,12 @@ function onDeleteLine() {
 }
 
 function onSwitchLine() {
-    SwitchLine()
+    switchLine()
     renderMeme()
 }
+
+function onDownloadMeme(elLink) {
+    const imgContent = gElCanvas.toDataURL('image/jpeg')
+    elLink.href = imgContent
+}
+

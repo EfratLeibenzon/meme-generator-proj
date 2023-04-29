@@ -9,7 +9,9 @@
 
 /* COMPONENTS */
 @import url(components/logo.css);
-@import url(components/nav-bar.css);
+@import url(components/header.css);
 @import url(components/img-gallery.css);
 @import url(components/meme-editor.css);
+@import url(components/footer.css);
+
 @import url(setup/mq.css);
