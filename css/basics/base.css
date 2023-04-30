@@ -11,9 +11,15 @@ html {
     color: var(--clrTxt);
 }
 
-body {
+body .main-layout .grid {
     margin: 0;
+    height: 100vh;
+    row-gap: 5px;
 
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 a {
@@ -26,10 +32,4 @@ a:hover {
 
 h1 {
     margin: 0;
-}
-
-
-.logo {
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    color: var(--clrTxt);
 }

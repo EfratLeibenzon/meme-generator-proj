@@ -13,10 +13,10 @@
 .main-header span:hover {
     text-decoration: underline;
     cursor: pointer;
+
 }
 
-@media screen and (max-width:400px) {
-    .logo {
-        font-size: 15px;
-    }
+.main-header span {
+    padding: 10px;
+    font-size: larger;
 }

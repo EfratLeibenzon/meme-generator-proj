@@ -12,9 +12,12 @@
         "txt txt txt"
         "addL del switch"
         "clr fntL fntS"
+        "download download download"
     ;
     gap: 4px;
-    height: 5rem;
+    height: 10rem;
+    width: 20rem;
+    align-items: stretch;
 
 }
 
@@ -34,8 +37,16 @@
     grid-area: switch;
 }
 
-.clr-inp {
+.clr-inp .main-editor .btn {
     grid-area: clr;
+    width: 50%;
+}
+
+input[type="color"] {
+    -webkit-appearance: none;
+    border: none;
+    width: 100%;
+    height: 100%;
 }
 
 .fnt-large {
@@ -44,6 +55,11 @@
 
 .fnt-small {
     grid-area: fntS;
+}
+
+.download {
+    grid-area: download;
+
 }
 
 
@@ -110,4 +126,10 @@
 
 .main-editor .font-btns label input {
     border: none;
+}
+
+.icon {
+    width: 20px;
+    height: 20px;
+
 }

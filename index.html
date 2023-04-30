@@ -9,12 +9,12 @@
     <title>Meme Generator</title>
 </head>
 
-<body class="main-layout" onload="onInit()">
+<body class="main-layout grid" onload="onInit()">
 
     <header class="main-header flex space-around align-center">
-        <h1 class="logo">Meme Generator</h1>
+        <img id="" class="logo" src="css/logo/LOGO.png" alt="" onclick="onMainPage()" />
         <nav class="nav-bar">
-            <span>Gallery</span>
+            <span onclick="onMainPage()">Gallery</span>
             <span>Memes</span>
             <span>About</span>
         </nav>
@@ -22,9 +22,6 @@
 
     <main class="main-container">
         <section class="filters flex space-between align-center">
-            <select class="select-tag" onchange="onSetFilter(this.value)">
-                <option value="">Search-Tag</option>
-            </select>
             <nav class="tags-nav grid"></nav>
         </section>
         <section class="img-gallery grid"></section>
@@ -36,24 +33,26 @@
         </section>
         <section class="control-box grid">
             <input type="text" class="txt-inp" id="text-input" placeholder="Write Text Here" oninput="onEnterTxt(this)">
-            <button class="add-line" onclick="onAddLine()">+</button>
-            <button class="del-line" onclick="onDeleteLine()">🗑️</button>
-            <button class="switch-line" onclick="onSwitchLine()">⬆⬇</button>
-
-            <input type="color" class="clr-inp" id="color" name="color" form="frmRegister" value="#ff0000"
+            <button class="add-line" onclick="onAddLine()"><img class="add-line icon" src="css/icons/add.png"></button>
+            <button class="del-line" onclick="onDeleteLine()"><img class="del-line icon"
+                    src="css/icons/trash.png"></button>
+            <button class="switch-line" onclick="onSwitchLine()"><img class="switch-line icon"
+                    src="css/icons/up-and-down-opposite-double-arrows-side-by-side.png"></button>
+            <input type="color" class="clr-inp btn" id="color" name="color" form="frmRegister" value="#ff0000"
                 oninput="onTxtColorChange(value)">
-            <button class="fnt-large" onclick="onFontSizeChange(1)">A+</button>
-            <button class="fnt-small" onclick="onFontSizeChange(-1)">A-</button>
-            <section class="btns download flex align-center">
-                <a href="#" onclick="onDownloadMeme(this)" download="your_meme.jpg">Download</a>
-            </section>
+            <button class="fnt-large" onclick="onFontSizeChange(1)"><img class="fnt-large icon"
+                    src="css/icons/increase font - icon.png"></button>
+            <button class="fnt-small" onclick="onFontSizeChange(-1)"><img class="fnt-small icon"
+                    src="css/icons/decrease font - icon.png"></button>
+            <button class="download" onclick="onDownloadMeme(this)" download="your_meme.jpg">download</button>
+
         </section>
     </section>
 
     </main>
 
     <footer class="footer">
-        <h2 class="logo">Meme Generator</h2>
+        <h2>Meme Generator</h2>
         <small class="rights">©Cofferights</small>
     </footer>
 

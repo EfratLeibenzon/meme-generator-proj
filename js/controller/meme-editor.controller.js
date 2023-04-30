@@ -12,6 +12,14 @@ function onUploadImg(imgId) {
 
 }
 
+function onMainPage() {
+    let elImgGallery = document.querySelector('.img-gallery')
+    elImgGallery.classList.remove('hide')
+    let elMemeEditor = document.querySelector('.meme-editor')
+    elMemeEditor.classList.remove('flex')
+
+}
+
 function renderImg(imgId) {
     let elImg = new Image()
     const imgUrl = gImgs.find(img => img.id === imgId).url

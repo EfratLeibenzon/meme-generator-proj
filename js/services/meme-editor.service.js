@@ -6,7 +6,7 @@ var gMeme = {
     selectedLineIdx: 0,
     lines: [
         {
-            txt: '',
+            txt: 'your text here',
             size: 40,
             x: 200,
             y: 50,
@@ -45,6 +45,7 @@ function setTxtColor(inputValue) {
 }
 
 function AddLine() {
+    if (gMeme.lines.length >= 4) return
     const pos = setPos()
     gMeme.lines.push(creatLine(pos))
     setSelectedLine(gMeme.lines.length - 1)
@@ -68,12 +69,12 @@ function switchLine() {
 
 function setPos() {
     let y = 0;
-    if (gMeme.selectedLineIdx === 1) {
+    if (gMeme.selectedLineIdx === 0) {
         y = 350
-    } else if (gMeme.selectedLineIdx === 2) {
-        y = 250
-    } else {
+    } else if (gMeme.selectedLineIdx === 1) {
         y = 200
+    } else {
+        y = 250
     }
     return y
 }
